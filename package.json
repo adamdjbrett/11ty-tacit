@@ -1,0 +1,16 @@
+{
+  "name": "11ty-tacit",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve",
+    "watch": "eleventy --watch",
+    "clean": "rm -rf _site"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "3.1.2",
+    "luxon": "^3.5.0"
+  }
+}

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title or metadata.title }}</title>
+    <meta name="description" content="{{ metadata.description }}">
+    <link rel="stylesheet" href="/css/tacit.css">
+    <style>
+      main {
+        max-width: 70rem;
+        margin: 0 auto;
+        padding: 0 1.75rem 2.5rem;
+      }
+
+      section.page {
+        width: 100%;
+        max-width: 70rem;
+        margin: 0 auto 2.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav aria-label="Main navigation">
+        <ul>
+          {% if metadata.logo %}
+            <li class="logo-mark">
+              <a href="/" aria-label="{{ metadata.title }} home">{{ metadata.logo }}</a>
+            </li>
+          {% endif %}
+          {% for item in metadata.navigation %}
+            {% set current = (page.url == item.url) or (item.url == "/blog/" and page.url and page.url.startsWith('/blog/')) %}
+            <li><a href="{{ item.url }}" {% if current %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      {{ content | safe }}
+    </main>
+
+    <footer>
+      <p>&copy; {% year %} {{ metadata.author }} — {{ metadata.title }} Built {{ build.builtAt | date("yyyy-LL-dd") }} with <a href="https://www.11ty.dev">Eleventy {{ build.eleventyVersion }}</a>.</p>
+    </footer>
+  </body>
+</html>

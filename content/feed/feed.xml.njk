@@ -1,0 +1,22 @@
+---
+permalink: /feed/feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>{{ metadata.title }}</title>
+    <link>{{ metadata.url }}</link>
+    <description>{{ metadata.description }}</description>
+    <generator>Eleventy {{ build.eleventyVersion }}</generator>
+    {% for post in collections.posts %}
+    <item>
+      <title>{{ post.data.title }}</title>
+      <link>{{ metadata.url }}{{ post.url }}</link>
+      <guid isPermaLink="true">{{ metadata.url }}{{ post.url }}</guid>
+      {% if post.date %}<pubDate>{{ post.date | date("ccc, dd LLL yyyy HH:mm:ss 'GMT'") }}</pubDate>{% endif %}
+      <description><![CDATA[{{ post.data.description or post.templateContent | safe }}]]></description>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>

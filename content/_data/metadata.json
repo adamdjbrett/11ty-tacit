@@ -1,0 +1,13 @@
+{
+  "title": "Tacit",
+  "description": "A minimal Eleventy starter styled with Tacit CSS.",
+  "author": "Adam DJ Brett",
+  "logo": "🐦‍⬛",
+  "url": "http://localhost:8080",
+  "navigation": [
+    { "label": "Home", "url": "/" },
+    { "label": "About", "url": "/about/" },
+    { "label": "Blog", "url": "/blog/" },
+    { "label": "Contact", "url": "/contact/" }
+  ]
+}
