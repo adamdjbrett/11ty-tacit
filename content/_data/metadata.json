@@ -1,8 +1,8 @@
 {
   "title": "Tacit",
-  "description": "A minimal Eleventy starter styled with Tacit CSS.",
+  "description": "A minimal Eleventy starter styled to mirror the Tacit demo layout.",
   "author": "Adam DJ Brett",
-  "logo": "🐦‍⬛",
+  "logoImage": "https://www.11ty.dev/img/built/SHPPIvd0m9-338.png",
   "url": "http://localhost:8080",
   "navigation": [
     { "label": "Home", "url": "/" },

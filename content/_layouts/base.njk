@@ -5,44 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ title or metadata.title }}</title>
     <meta name="description" content="{{ metadata.description }}">
+    {% if metadata.logoImage %}
+      <link rel="icon" type="image/png" href="{{ metadata.logoImage }}">
+    {% endif %}
     <link rel="stylesheet" href="/css/tacit.css">
-    <style>
-      main {
-        max-width: 70rem;
-        margin: 0 auto;
-        padding: 0 1.75rem 2.5rem;
-      }
-
-      section.page {
-        width: 100%;
-        max-width: 70rem;
-        margin: 0 auto 2.5rem;
-      }
-    </style>
   </head>
   <body>
-    <header>
-      <nav aria-label="Main navigation">
-        <ul>
-          {% if metadata.logo %}
-            <li class="logo-mark">
-              <a href="/" aria-label="{{ metadata.title }} home">{{ metadata.logo }}</a>
-            </li>
-          {% endif %}
-          {% for item in metadata.navigation %}
-            {% set current = (page.url == item.url) or (item.url == "/blog/" and page.url and page.url.startsWith('/blog/')) %}
-            <li><a href="{{ item.url }}" {% if current %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
-          {% endfor %}
-        </ul>
-      </nav>
-    </header>
+    <section class="site-shell">
+      <header>
+        <nav aria-label="Brand">
+          <ul>
+            {% if metadata.logoImage %}
+              <li class="brand-mark">
+                <a href="/" aria-label="{{ metadata.title }} home">
+                  <img src="{{ metadata.logoImage }}" alt="{{ metadata.title }} logo">
+                </a>
+              </li>
+            {% endif %}
+          </ul>
+        </nav>
+        <nav aria-label="Main navigation">
+          <ul>
+            {% for item in metadata.navigation %}
+              {% set current = (page.url == item.url) or (item.url == "/blog/" and page.url and page.url.startsWith('/blog/')) %}
+              <li><a href="{{ item.url }}" {% if current %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+            {% endfor %}
+          </ul>
+        </nav>
+      </header>
 
-    <main>
-      {{ content | safe }}
-    </main>
+      <article>
+        <main>
+          {{ content | safe }}
+        </main>
+      </article>
 
-    <footer>
-      <p>&copy; {% year %} {{ metadata.author }} — {{ metadata.title }} Built {{ build.builtAt | date("yyyy-LL-dd") }} with <a href="https://www.11ty.dev">Eleventy {{ build.eleventyVersion }}</a>.</p>
-    </footer>
+      <footer>
+        <nav aria-label="Credits">
+          <ul>
+            <li><small>Made by {{ metadata.author }} with <a href="https://www.11ty.dev/">Eleventy {{ build.eleventyVersion }}</a></small></li>
+          </ul>
+        </nav>
+        <nav aria-label="Project links">
+          <ul>
+            <li><small><a href="https://github.com/yegor256/tacit">Tacit</a></small></li>
+            <li><small><a href="https://www.11ty.dev/">11ty</a></small></li>
+            <li><small><a href="/feed/feed.xml">RSS</a></small></li>
+          </ul>
+        </nav>
+        <nav aria-label="Build info">
+          <ul>
+            <li><small>Built {{ build.builtAt | date("yyyy-LL-dd") }}</small></li>
+          </ul>
+        </nav>
+      </footer>
+    </section>
   </body>
 </html>

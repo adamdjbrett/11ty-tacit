@@ -1,0 +1,50 @@
+---
+layout: base
+title: Home
+---
+
+<p>
+  <strong>{{ metadata.title }}</strong> is an Eleventy starter that keeps the
+  original Tacit feel: minimal HTML, centered content, and typography that does
+  the layout work for you without utility classes.
+</p>
+
+<pre>&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;link rel="stylesheet" href="/css/tacit.css"&gt;
+  &lt;/head&gt;
+&lt;/html&gt;</pre>
+
+<p>
+  The layout on this starter now follows the same shell as the upstream demo:
+  a logo row, a simple navigation row, a framed article body, and a quiet
+  footer. The logo uses the official 11ty artwork instead of the upstream Tacit
+  bird mark.
+</p>
+
+<p>
+  You can keep writing plain HTML and Markdown for pages, posts, forms, lists,
+  tables, and figures. Tacit still styles the native elements directly, so the
+  markup stays small.
+</p>
+
+<h2>Latest posts</h2>
+<ul>
+  {% for post in collections.posts | slice(0,3) %}
+    <li>
+      <strong><a href="{{ post.url }}">{{ post.data.title }}</a></strong><br>
+      <small>{{ post.date | date("LLL d, yyyy") }}</small><br>
+      {{ post.data.description or post.templateContent | striptags | truncate(140) }}
+    </li>
+  {% else %}
+    <li>No posts yet.</li>
+  {% endfor %}
+</ul>
+
+<h2>Starter pages</h2>
+<p>
+  Browse the <a href="/about/">about page</a>, submit the <a href="/contact/">contact form</a>,
+  or read the <a href="/blog/">blog index</a> to see how the shared layout holds up
+  across the rest of the site.
+</p>

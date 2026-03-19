@@ -393,3 +393,69 @@ figure img {
   }
 
 }
+
+body {
+  min-height:100%;
+}
+
+.site-shell {
+  width:56.25rem;
+}
+
+.site-shell article {
+  margin-bottom:0;
+}
+
+.site-shell main {
+  display:block;
+}
+
+.site-shell nav + nav {
+  margin-top:0.9rem;
+}
+
+.site-shell nav[aria-label="Brand"] ul {
+  margin-left:0;
+}
+
+.site-shell .brand-mark img {
+  display:block;
+  max-height:100px;
+  width:auto;
+}
+
+.site-shell main > :first-child {
+  margin-top:0;
+}
+
+.site-shell main > :last-child {
+  margin-bottom:0;
+}
+
+.site-shell section.page {
+  margin:0;
+  width:auto;
+}
+
+.site-shell footer {
+  padding-top:1.8rem;
+}
+
+.site-shell footer nav + nav {
+  margin-top:0.6rem;
+}
+
+a[aria-current="page"] {
+  text-decoration:underline;
+  text-underline-offset:0.18em;
+}
+
+@media (max-width:767px) {
+  .site-shell {
+    width:auto;
+  }
+
+  .site-shell .brand-mark img {
+    max-height:72px;
+  }
+}
